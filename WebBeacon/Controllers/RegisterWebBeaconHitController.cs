@@ -14,7 +14,7 @@ namespace WebBeacon.Controllers
             return View();
         }
 
-        public IActionResult Hit(Models.WebBeacon webbeacon) {
+        public IActionResult Hit(Models.Beacon webbeacon) {
             return View();
         }
     }

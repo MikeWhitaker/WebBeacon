@@ -11,7 +11,7 @@ namespace WebBeacon.Infrastucture
 
         DbSet<User> Users;
         DbSet<IpAddress> IpAddresses;
-        DbSet<WebBeacon.Models.WebBeacon> WebBeacons;
+        DbSet<WebBeacon.Models.Beacon> WebBeacons;
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {

@@ -7,12 +7,8 @@ namespace WebBeacon.Models
     public class IpAddress
     {
 
-        public string Ipadress { get => ipadress; set => ipadress = value; }
-        public string OccuranceDT { get => occuranceDT; set => occuranceDT = value; }
-
-        
-        //public DateTime OccuranceDT;
-        private string occuranceDT;
-        private string ipadress;
+        public string Ipaddress { get => ipadress; set => ipadress = value; }
+                        
+        private string ipaddress;
     }
 }
