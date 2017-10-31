@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WebBeacon.Models {
 
-    class BeaconHit{
+    public class BeaconHit{
 
         public int Id { get => id; set => id = value; }
         public Beacon Beacon { get => beacon; set => beacon = value; }

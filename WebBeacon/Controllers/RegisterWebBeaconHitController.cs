@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebBeacon.Models;
+using WebBeacon.Infrastucture;
 
 namespace WebBeacon.Controllers
 {
@@ -14,8 +16,33 @@ namespace WebBeacon.Controllers
             return View();
         }
 
-        public IActionResult Hit(Models.Beacon webbeacon) {
-            return View();
+        [HttpGet]
+        public IActionResult Hit(string BeaconGuidFromRequest) {
+
+
+            using (var db = new BeaconContext()) {
+
+                Beacon AccessedBeacon = db.Beacons.FirstOrDefault(s => s.BeaconGuid == BeaconGuidFromRequest);
+
+                if (AccessedBeacon != null) {
+
+                    var image = System.IO.File.OpenRead("images\beaconTransParent.png");
+                    db.BeaconHits.Add(new BeaconHit { Id = 1, Beacon = AccessedBeacon, BeaconHitFromIp = new IpAddress { Ipaddress = "127.0.0.1" }, OccuranceDT = DateTime.Now });
+                    return File(image, "image/jpeg");
+
+                } else {
+
+                    return NotFound();
+
+                }
+
+
+            }
+            
+
+
+
+            //return View();
         }
     }
 }
