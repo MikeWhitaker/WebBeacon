@@ -8,7 +8,7 @@ using System;
 
 namespace WebBeacon.Migrations
 {
-    [DbContext(typeof(WebBeaconContext))]
+    [DbContext(typeof(BeaconContext))]
     [Migration("20171025074156_InitialCreate")]
     partial class InitialCreate
     {

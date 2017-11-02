@@ -8,8 +8,8 @@ using System;
 
 namespace WebBeacon.Migrations
 {
-    [DbContext(typeof(WebBeaconContext))]
-    partial class WebBeaconContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(BeaconContext))]
+    partial class BeaconContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
