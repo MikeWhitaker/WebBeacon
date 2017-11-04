@@ -1,0 +1,31 @@
+﻿@model ShowBeaconHitViewModel;
+@{
+    ViewData["Title"] = "ShowBeaconHist";
+}
+
+<h2>ShowBeaconHits</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>IpAddress</th>
+                <th>Occured At</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var beaconHit in Model.BeaconHitList) {
+                <tr>
+                    <td>@beaconHit.BeaconHitFromIp.Ipaddress</td>
+                    <td>@beaconHit.OccuranceDT</td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+
+

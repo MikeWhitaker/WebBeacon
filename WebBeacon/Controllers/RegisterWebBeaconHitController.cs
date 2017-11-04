@@ -26,8 +26,11 @@ namespace WebBeacon.Controllers
 
                 if (AccessedBeacon != null) {
 
-                    var image = System.IO.File.OpenRead("images\beaconTransParent.png");
-                    db.BeaconHits.Add(new BeaconHit { Id = 1, Beacon = AccessedBeacon, BeaconHitFromIp = new IpAddress { Ipaddress = "127.0.0.1" }, OccuranceDT = DateTime.Now });
+                    var image = System.IO.File.OpenRead("wwwroot/images/beaconTransParent.png");
+                    //db.BeaconHits.Add(new BeaconHit { Id = 1, Beacon = AccessedBeacon, BeaconHitFromIp = new IpAddress { Ipaddress = "127.0.0.1" }, OccuranceDT = DateTime.Now });
+                    db.BeaconHits.Add(new BeaconHit {Beacon = AccessedBeacon, BeaconHitFromIp = new IpAddress { Ipaddress = "127.0.0.1" }, OccuranceDT = DateTime.Now });
+                    db.SaveChanges();
+
                     return File(image, "image/jpeg");
 
                 } else {

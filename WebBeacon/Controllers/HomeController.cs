@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebBeacon.Models;
+using WebBeacon.Infrastucture;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebBeacon.Controllers
 {
@@ -22,11 +24,23 @@ namespace WebBeacon.Controllers
             return View();
         }
 
-        public IActionResult Contact()
-        {
+        public IActionResult Contact(){
+
             ViewData["Message"] = "Your contact page.";
 
             return View();
+        }
+
+        public IActionResult ShowBeaconHits() {
+
+            using (var db = new BeaconContext()) {
+
+                ShowBeaconHitViewModel showViewModel = new ShowBeaconHitViewModel();
+                showViewModel.BeaconHitList.AddRange(db.BeaconHits.Include(s => s.BeaconHitFromIp).ToList<BeaconHit>());
+                showViewModel.LoggedInuser = db.Users.FirstOrDefault();
+
+                return View(showViewModel);
+            }
         }
 
         //public IActionResult Error()
