@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using WebBeacon.Models;
-using WebBeacon.Infrastucture;
+using WebBeacon.Infrastructure;
 
 namespace WebBeacon.Controllers
 {
@@ -99,7 +99,7 @@ namespace WebBeacon.Controllers
 
 
 
-                RepositoryUsers.Save(aNewUser);
+                //RepositoryUsers.Save(aNewUser);
                 return RedirectToAction("Index", "Home");
 
             } else {

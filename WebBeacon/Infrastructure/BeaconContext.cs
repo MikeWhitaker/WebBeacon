@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using WebBeacon.Models;
 
-namespace WebBeacon.Infrastucture
+namespace WebBeacon.Infrastructure
 {
     public class BeaconContext : DbContext
     {

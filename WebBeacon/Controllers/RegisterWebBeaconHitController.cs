@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using WebBeacon.Models;
-using WebBeacon.Infrastucture;
+using WebBeacon.Infrastructure;
 
 namespace WebBeacon.Controllers
 {

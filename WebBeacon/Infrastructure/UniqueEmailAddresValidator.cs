@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using WebBeacon.Models;
 using WebBeacon.Infrastructure;
 
-
 namespace WebBeacon.Infrastructure {
 
     public class UniqueEmailAddresValidator : Attribute, IModelValidator {

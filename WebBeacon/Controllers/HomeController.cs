@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebBeacon.Models;
-using WebBeacon.Infrastucture;
+using WebBeacon.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebBeacon.Controllers
