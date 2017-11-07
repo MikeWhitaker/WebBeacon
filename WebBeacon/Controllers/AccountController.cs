@@ -91,11 +91,12 @@ namespace WebBeacon.Controllers
 
             if (ModelState.IsValid) {
 
-                User aNewUser = new User();
-                //copy attibutes to new user
-                aNewUser.Email = aRegisterViewModel.Email;
-                aNewUser.Name = aRegisterViewModel.Name;
-                aNewUser.PasswordHash = aRegisterViewModel.Password;
+                User aNewUser = new User {
+                    //copy attibutes to new user
+                    Email = aRegisterViewModel.Email,
+                    Name = aRegisterViewModel.Name,
+                    PasswordHash = aRegisterViewModel.Password
+                };
 
 
 
