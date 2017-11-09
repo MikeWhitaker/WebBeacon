@@ -33,7 +33,7 @@ namespace WebBeacon.Controllers
                 await HttpContext.SignInAsync("CookieAuth", principal);
 
                 //Just redirect to our index after logging in. 
-                //return Redirect("/user/");
+                //return Redirect("/home/");
                 return Redirect(returnUrl ?? Url.Action("Index", "Home"));
 
             }

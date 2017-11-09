@@ -14,12 +14,7 @@ namespace WebBeacon.Controllers
     [Authorize]
     public class MyBeaconsController : Controller
     {
-        private readonly BeaconContext _context;
-
-        public MyBeaconsController(BeaconContext context)
-        {
-            _context = context;
-        }
+        
 
         // GET: MyBeacons
         public async Task<IActionResult> Index()
@@ -27,6 +22,22 @@ namespace WebBeacon.Controllers
             //Todo: Hier moet de logica komen om asynchronus van de reeds ingelogd (omdat de user ingelogd moet zijn) user de lijst met beacons op te vragen.
             
             //return View(await _context.Users.ToListAsync());
+            using (var db = new BeaconContext()) {
+
+                var loggedInUserName = HttpContext.User.Identity.Name;
+                User logedInUser = db.Users.FirstOrDefault(s => s.Email == loggedInUserName);
+
+                if (loggedInUserName != null) {
+
+                    View(loggedInUserName);
+
+                } else {
+                    throw new NotImplementedException();
+                }
+
+
+            }
+
             return View();
         }
 
@@ -38,8 +49,9 @@ namespace WebBeacon.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .SingleOrDefaultAsync(m => m.Id == id);
+            //var user = await _context.Users;
+                var user = new User();
+                //.SingleOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
                 return NotFound();
@@ -63,28 +75,28 @@ namespace WebBeacon.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
+                //_context.Add(user);
+                //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
 
         // GET: MyBeacons/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Edit(int? id)
+        //{
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var user = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return View(user);
-        }
+            //var user = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
+            //if (user == null)
+            //{
+            //    return NotFound();
+            //}
+            //return View(user);
+        //}
 
         // POST: MyBeacons/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -100,59 +112,59 @@ namespace WebBeacon.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserExists(user.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                //try
+                //{
+                //    _context.Update(user);
+                //    await _context.SaveChangesAsync();
+                //}
+                //catch (DbUpdateConcurrencyException)
+                //{
+                //    if (!UserExists(user.Id))
+                //    {
+                //        return NotFound();
+                //    }
+                //    else
+                //    {
+                //        throw;
+                //    }
+                //}
+                //return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
 
         // GET: MyBeacons/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var user = await _context.Users
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+            //var user = await _context.Users
+            //    .SingleOrDefaultAsync(m => m.Id == id);
+            //if (user == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return View(user);
-        }
+            //return View(user);
+        //}
 
         // POST: MyBeacons/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var user = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var user = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
+        //    _context.Users.Remove(user);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }
+        //private bool UserExists(int id)
+        //{
+        //    return _context.Users.Any(e => e.Id == id);
+        //}
     }
 }

@@ -1,0 +1,33 @@
+﻿@model WebBeacon.Models.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Aanmelden:</h2></div>
+    <div class="panel-body">
+        <form class="p-a-1" asp-action="Login" asp-controller="Account" method="post">
+            <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+            <div class="form-group">
+                <label asp-for=@Model.Username>Gebruikersnaam:</label>
+                <input class="form-control" asp-for=@Model.Username />
+
+            </div>
+            <div class="form-group">
+                <label asp-for=@Model.Password>Paswoord:</label>
+                <input class="form-control" asp-for=@Model.Password />
+
+            </div>
+            <div>
+                <button class="btn btn-primary pull-right" type="submit"> Oke</button>
+                <a class="btn btn-default pull-right" asp-controller="Home" asp-action="Index">Annuleren</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
