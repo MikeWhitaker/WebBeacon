@@ -54,12 +54,13 @@
                     </tr>
                     <tr>
                         
-                        @if(Model.FirstBeaconHit != null) { 
+                        @if(Model.FirstBeaconHit != null) {
                         <td>
-                            <a href="user.html">Brad Traversy</a>
+                            @Model.FirstBeaconHit.BeaconHitFromIp.Ipaddress
                         </td>
-                        <td>techguyinfo@gmail.com</td>
-                        <td>Admin</td>
+                        <td>
+                            @Model.FirstBeaconHit.OccuranceDT.ToString()
+                        </td>
                         } else {
                             
                             <td> Beacon heeft nog geen hits ontvangen. </td>
