@@ -28,10 +28,12 @@ namespace WebBeacon.Controllers
                 User logedInUser = await db.Users.FirstOrDefaultAsync(s => s.Email == loggedInUserName);
 
                 List<Beacon> userBeacons = await db.Beacons.Where(s => s.CreatedByUser == logedInUser).ToListAsync();
+                BeaconHit firstBeaconHit = await db.BeaconHits.Where(s => s.Beacon == userBeacons.FirstOrDefault()).FirstOrDefaultAsync();
+
 
                 if (loggedInUserName != null) {
 
-                    View(new MyBeaconViewModel { LoggedInUser = logedInUser, UsersBeacons = userBeacons });
+                    View(new MyBeaconViewModel { LoggedInUser = logedInUser, UsersBeacons = userBeacons ,FirstBeaconHit = firstBeaconHit});
 
                 } else {
 

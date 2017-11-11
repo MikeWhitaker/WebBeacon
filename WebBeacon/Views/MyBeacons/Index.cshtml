@@ -49,39 +49,22 @@
                 <h3>Beacon informatie</h3>
                 <table class="table table-striped">
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Group</th>
+                        <th>Source IP</th>
+                        <th>Occurance</th>
                     </tr>
                     <tr>
+                        
+                        @if(Model.FirstBeaconHit != null) { 
                         <td>
                             <a href="user.html">Brad Traversy</a>
                         </td>
                         <td>techguyinfo@gmail.com</td>
                         <td>Admin</td>
+                        } else {
+                            
+                            <td> Beacon heeft nog geen hits ontvangen. </td>
+                        }
                     </tr>
-                    <tr>
-                        <td>
-                            <a href="user.html">John Doe</a>
-                        </td>
-                        <td>jdoe@gmail.com</td>
-                        <td>Admin</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="user.html">James Smith</a>
-                        </td>
-                        <td>jamessmith@gmail.com</td>
-                        <td>Registered</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="user.html">Lisa Gibbons</a>
-                        </td>
-                        <td>lgibbons@gmail.com</td>
-                        <td>Registered</td>
-                    </tr>
-
                 </table>
                 <a class="btn btn-default" href="users.html">View All Users</a>
             </div>
