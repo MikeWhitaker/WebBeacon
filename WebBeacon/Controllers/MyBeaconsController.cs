@@ -25,14 +25,18 @@ namespace WebBeacon.Controllers
             using (var db = new BeaconContext()) {
 
                 var loggedInUserName = HttpContext.User.Identity.Name;
-                User logedInUser = db.Users.FirstOrDefault(s => s.Email == loggedInUserName);
+                User logedInUser = await db.Users.FirstOrDefaultAsync(s => s.Email == loggedInUserName);
+
+                List<Beacon> userBeacons = await db.Beacons.Where(s => s.CreatedByUser == logedInUser).ToListAsync();
 
                 if (loggedInUserName != null) {
 
-                    View(loggedInUserName);
+                    View(new MyBeaconViewModel { LoggedInUser = logedInUser, UsersBeacons = userBeacons });
 
                 } else {
+
                     throw new NotImplementedException();
+
                 }
 
 

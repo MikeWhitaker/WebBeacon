@@ -10,6 +10,7 @@ using WebBeacon.Infrastructure;
 
 namespace WebBeacon.Controllers
 {
+    [RequireHttps]
     public class AccountController : Controller
     {
         [HttpGet]

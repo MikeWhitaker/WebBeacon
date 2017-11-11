@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebBeacon.Models.User>
+﻿@model WebBeacon.Models.MyBeaconViewModel
 
 @{
     ViewData["Title"] = "My Beacons";
@@ -28,18 +28,25 @@
                         
                     </tr>
                     <tr>
+                        @foreach (var beacon in Model.UsersBeacons) {
+                        
                         <td>
-                            <a href="#">Tonen</a>
+                            <a href="#">Tonen markup</a>
                         </td>
-                        <td> beaconnaam </td>
+                        
+                        <td> @beacon.BeaconName</td>
+
                         <td> <a href="#">Details</a> <a href="#">Verwijderen</a> </td>
+
+                        }
+
                     </tr>
                     <tr>
                 </table>
-                <a class="btn btn-default" href="pages.html"><i class="glyphicon glyphicon-plus"></i> Nieuw</a>
+                <a class="btn btn-default pull-right" href="pages.html"><i class="glyphicon glyphicon-plus"></i> Nieuw</a>
                 <hr>
 
-                <h3>Latest Users</h3>
+                <h3>Beacon informatie</h3>
                 <table class="table table-striped">
                     <tr>
                         <th>Name</th>
